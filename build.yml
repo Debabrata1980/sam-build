@@ -1,0 +1,6 @@
+name: Github file to validate sam template
+description: GitHub action that validates the sam template
+
+runs:
+  using: docker
+  image: Dockerfile
