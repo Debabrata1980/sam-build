@@ -9,7 +9,8 @@ RUN python3 -m ensurepip --upgrade \
 RUN pip3 install --upgrade awscli aws-sam-cli
 RUN pip3 uninstall --yes pip \
         && apk del python3-dev gcc musl-dev
-        
+
+RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - 
 RUN apt-get install -y nodejs
         
