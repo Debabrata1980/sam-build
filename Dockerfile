@@ -10,17 +10,8 @@ RUN pip3 install --upgrade awscli aws-sam-cli
 RUN pip3 uninstall --yes pip \
         && apk del python3-dev gcc musl-dev
         
-# Use the official Node.js 12 image.
-# https://hub.docker.com/_/node
-FROM node:12
-# Create and change to the app directory.
-WORKDIR /usr/src/app
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure both package.json AND package-lock.json are copied.
-# Copying this separately prevents re-running npm install on every code change.
-COPY package.json ./
-# Install production dependencies.
-RUN npm install
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - 
+RUN apt-get install -y nodejs
         
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
