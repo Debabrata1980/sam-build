@@ -10,9 +10,9 @@ RUN pip3 install --upgrade awscli aws-sam-cli
 RUN pip3 uninstall --yes pip \
         && apk del python3-dev gcc musl-dev
 
-RUN apt install -y curl
+RUN yum -y install  curl
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - 
-RUN apt install -y nodejs
+RUN yum -y install nodejs
         
 COPY entrypoint.sh /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]
