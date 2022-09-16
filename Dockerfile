@@ -10,8 +10,6 @@ RUN pip3 install --upgrade awscli aws-sam-cli
 RUN pip3 uninstall --yes pip \
         && apk del python3-dev gcc musl-dev
 
-RUN apk add  --update curl
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - 
 RUN apk add --update nodejs npm
         
 COPY entrypoint.sh /entrypoint.sh
