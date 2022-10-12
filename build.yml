@@ -1,6 +1,22 @@
 name: Github file to validate sam template
 description: GitHub action that validates the sam template
 
+inputs:
+  template:
+    description: 'Path to the SAM template file.'
+    required: true
+  region:
+    description: 'AWS region to use in the aws cli.'
+    required: false
+    default: us-east-1
+  config-file:
+    description: "Path to the configuration file containing default parameter values to use."
+    required: false
+
 runs:
   using: docker
   image: Dockerfile
+  args:
+    - ${{ inputs.template }}
+    - ${{ inputs.region }}
+    - ${{ inputs.config-file }}
