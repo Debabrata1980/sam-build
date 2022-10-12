@@ -16,7 +16,7 @@ then
 args[2]="--config-file $3"
 fi
 
-sam build $
+sam build ${args[@]}
 if [ $? -ne 0 ]; then
   echo "SAM build error"
   exit 1
